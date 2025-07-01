@@ -1,0 +1,51 @@
+name: mytumor
+type: paired_image_depth
+image_dir: C:\Users\Boxcat21\Documents\SoftwareWorkspace\Data\MarigoldData\batch1\images
+depth_dir: C:\Users\Boxcat21\Documents\SoftwareWorkspace\Data\MarigoldData\batch1\depths
+filename_list: null  # or point to a .txt file listing filenames without extension
+depth_format: image
+depth_extension: png
+image_extension: png
+has_invalid_depth: false
+
+
+# image_ext: ".png"
+# depth_ext: ".png"
+# image_size: [640, 480]
+# depth_size: [640, 480]
+# camera_intrinsics: [525.0, 525.0, 319.5, 239.5]  # fx, fy, cx, cy
+# # Optional: If you have a specific depth scale factor
+# depth_scale: 1.0  # Adjust this based on your dataset's depth values
+# # Optional: If you have a specific depth offset
+# depth_offset: 0.0  # Adjust this based on your dataset's depth values
+# # Optional: If you have a specific normalization for depth values
+# depth_normalization: true  # Set to true if depth values need normalization
+# # Optional: If you have a specific transformation
+# transformations:
+#   - type: "Resize"
+#     size: [640, 480]
+#   - type: "ToTensor"
+#   - type: "Normalize"
+#     mean: [0.485, 0.456, 0.406]  # RGB mean
+#     std: [0.229, 0.224, 0.225]    # RGB std
+# # Optional: If you have a specific augmentation strategy
+# augmentation:
+#   - type: "RandomHorizontalFlip"
+#     probability: 0.5
+#   - type: "ColorJitter"
+#     brightness: 0.2
+#     contrast: 0.2
+#     saturation: 0.2
+#     hue: 0.1
+# # Optional: If you have a specific validation split
+# validation_split: 0.1  # Fraction of the dataset to use for validation
+# # Optional: If you have a specific test split
+# test_split: 0.1  # Fraction of the dataset to use for testing
+# # Optional: If you have a specific batch size
+# batch_size: 32  # Adjust based on your hardware capabilities
+# # Optional: If you have a specific number of workers for data loading
+# num_workers: 4  # Adjust based on your hardware capabilities
+# # Optional: If you have a specific shuffle setting for training
+# shuffle: true  # Set to true for training, false for validation/testing
+# # Optional: If you have a specific seed for reproducibility
+
