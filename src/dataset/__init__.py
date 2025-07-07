@@ -87,6 +87,7 @@ def get_dataset(
     List[BaseIIDDataset],
     List[BaseNormalsDataset],
 ]:
+    print(f"Creating dataset: {cfg_data_split.name} ({mode})")
     if "mixed" == cfg_data_split.name:
         assert DatasetMode.TRAIN == mode, "Only training mode supports mixed datasets."
         dataset_ls = [
@@ -94,6 +95,13 @@ def get_dataset(
             for _cfg in cfg_data_split.dataset_list
         ]
         return dataset_ls
+    # elif cfg_data_split.name == "tumor_dataset": #TODO: need to verify the conditional properly handles the general case that the else condition does (elif in dict)
+    #     dataset = MyTumorDataset(
+    #     root_dir=os.path.join(base_data_dir, cfg_data_split.get("data_root", "")),
+    #     split=mode,
+    #     transform=transform,
+    #     filename_list_path=cfg_data_split.get("filenames", None)
+    # )
     elif cfg_data_split.name in dataset_name_class_dict.keys():
         dataset_class = dataset_name_class_dict[cfg_data_split.name]
         dataset = dataset_class(

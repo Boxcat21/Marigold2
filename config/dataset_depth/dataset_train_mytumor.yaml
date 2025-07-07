@@ -1,14 +1,15 @@
-train:
-  batch_size: 2
-  dataset:
-    name: mytumor
+dataset:  
+  train:
+    batch_size: 2
+    name: tumor_dataset
     type: paired_image_depth
-    image_dir: C:\Users\Boxcat21\Documents\SoftwareWorkspace\Data\MarigoldData\batch1\images  # e.g., datasets/mytumor/images
-    depth_dir: C:\Users\Boxcat21\Documents\SoftwareWorkspace\Data\MarigoldData\batch1\depths  # e.g., datasets/mytumor/depths
+    filenames: null
+    image_dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1/images  # e.g., datasets/mytumor/images
+    depth_dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1/depths  # e.g., datasets/mytumor/depths
     depth_format: image
     image_extension: png
     depth_extension: png
     has_invalid_depth: false
-  shuffle: true
-  drop_last: true
-  infinite: true
+    shuffle: true
+    drop_last: true
+    infinite: true
