@@ -1,0 +1,29 @@
+COMMANDS:
+python run.py \
+     --input_rgb_dir input/tacto_test_2 \
+     --output_dir output/tacto_test_2_lcm
+
+python script/depth/train.py \
+  --config config/train_marigold_mytumor.yaml \
+  --base_data_dir C:/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1 \
+  --base_ckpt_dir \\wsl.localhost/Ubuntu/home/boxcat/workspace/labwork/depthmodel/ckptm2
+
+
+python script/depth/train.py \
+  --config config/train_marigold_mytumor.yaml \
+  --base_data_dir /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1 \
+  --base_ckpt_dir /home/boxcat/workspace/labwork/depthmodel/ckptm2 \
+  --no_wandb
+
+python script/depth/train.py \
+  --config config/train_marigold_mytumor.yaml \
+  --base_data_dir /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1 \
+  --base_ckpt_dir /home/boxcat/workspace/labwork/depthmodel/ckptm2 \
+  --no_wandb \
+  --add_datetime_prefix
+
+
+
+NOTES:
+- might need to change slashes in "/home/boxcat/workspace/labwork/depthmodel/Marigold2/config/dataset_depth/data_mytumor.yaml" because of linux v windows path parsing
+- might also need to change the png extension to .png    
