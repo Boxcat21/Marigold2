@@ -4,7 +4,7 @@ import numpy as np
 from torch.utils.data import Dataset
 
 class MyTumorDataset(Dataset):
-    def __init__(self, root_dir, split='train', transform=None, filename_list_path=None):
+    def __init__(self, root_dir, split='train', transform=None, filename_list_path=None, **kwargs):
         self.root_dir = root_dir
         self.transform = transform
         self.split = split

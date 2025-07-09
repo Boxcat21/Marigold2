@@ -3,6 +3,7 @@ dataset:
     batch_size: 2
     name: tumor_dataset
     type: paired_image_depth
+    dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1  # e.g., datasets/mytumor
     filenames: null
     image_dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1/images  # e.g., datasets/mytumor/images
     depth_dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1/depths  # e.g., datasets/mytumor/depths
