@@ -1,44 +1,51 @@
 import os
-import cv2
 import numpy as np
-from torch.utils.data import Dataset
+from src.dataset.base_depth_dataset import BaseDepthDataset, DatasetMode, DepthFileNameMode
+from src.util.depth_transform import DepthNormalizerBase  # adjust path if needed
 
-class MyTumorDataset(Dataset):
-    def __init__(self, root_dir, split='train', transform=None, filename_list_path=None, **kwargs):
-        self.root_dir = root_dir
-        self.transform = transform
-        self.split = split
 
-        self.image_dir = os.path.join(root_dir, 'images')
-        self.depth_dir = os.path.join(root_dir, 'depths')
+class MyTumorDataset(BaseDepthDataset):
+    def __init__(
+        self,
+        mode: DatasetMode,
+        filename_ls_path: str,
+        dataset_dir: str,
+        disp_name: str = "MyTumor",
+        min_depth: float = 0.0,
+        max_depth: float = 0.002,  # adjust if your depths go higher
+        has_filled_depth: bool = False,
+        name_mode: DepthFileNameMode = DepthFileNameMode.id,
+        depth_transform: DepthNormalizerBase = None,
+        augmentation_args: dict = None,
+        resize_to_hw=None,
+        move_invalid_to_far_plane: bool = True,
+        rgb_transform=lambda x: x / 255.0 * 2 - 1,
+        **kwargs,
+    ):
+        super().__init__(
+            mode=mode,
+            filename_ls_path=filename_ls_path,
+            dataset_dir=dataset_dir,
+            disp_name=disp_name,
+            min_depth=min_depth,
+            max_depth=max_depth,
+            has_filled_depth=has_filled_depth,
+            name_mode=name_mode,
+            depth_transform=depth_transform,
+            augmentation_args=augmentation_args,
+            resize_to_hw=resize_to_hw,
+            move_invalid_to_far_plane=move_invalid_to_far_plane,
+            rgb_transform=rgb_transform,
+            **kwargs,
+        )
 
-        if filename_list_path is not None:
-            with open(filename_list_path, 'r') as f:
-                self.samples = [line.strip() for line in f if line.strip()]
-        else:
-            self.samples = sorted([
-                fname for fname in os.listdir(self.image_dir)
-                if fname.endswith('.png')
-            ])
-
-    def __len__(self):
-        return len(self.samples)
-
-    def __getitem__(self, idx):
-        img_name = self.samples[idx]
-        img_path = os.path.join(self.image_dir, img_name)
-
-        depth_name = img_name.replace('.png', '_1.png')
-        depth_path = os.path.join(self.depth_dir, depth_name)
-
-        image = cv2.imread(img_path)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        depth = cv2.imread(depth_path, cv2.IMREAD_GRAYSCALE).astype(np.float32) / 255.0 * 0.002
-
-        sample = {'image': image, 'depth': depth}
-
-        if self.transform:
-            sample = self.transform(sample)
-
-        return sample
+    def _read_depth_file(self, rel_path):
+        """
+        Override if your depths are stored in 8-bit PNG format and need conversion.
+        Assumes values were saved as: (real_depth / 0.002 * 255).astype(np.uint8)
+        """
+        depth_img = self._read_image(rel_path)
+        if depth_img.ndim == 3:
+            depth_img = depth_img[:, :, 0]  # keep 1 channel
+        depth_float = depth_img.astype(np.float32) / 255.0 * 0.002
+        return depth_float
