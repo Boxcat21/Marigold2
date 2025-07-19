@@ -2,7 +2,8 @@ dataset:
   val:
   - name: tumor_dataset
     disp_name: mytumor_val
-    dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1  # e.g., datasets/mytumor
+    # dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1  # e.g., datasets/mytumor
+    dir: ''
     filenames: data_split/tumor_depth/filenames_val.txt
     depth_format: image
     image_extension: png

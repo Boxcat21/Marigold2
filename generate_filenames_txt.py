@@ -25,10 +25,10 @@ valsplit_size = len(filenames) - trainsplit_size  # Remaining 20% for validation
 # Write to file
 with open(train_file, 'w') as f:
     for name in filenames[:trainsplit_size]:
-        f.write("./data/batch1/images/" + name + " " + "./data/batch1/depths/" + name + "\n")
-        
+        f.write("batch1/images/" + name + ".png " + "batch1/depths/" + name + ".png\n")
+
 with open(val_file, 'w') as f:
     for name in filenames[trainsplit_size:]:
-        f.write("./data/batch1/images/" + name + " " + "./data/batch1/depths/" + name + "\n")
+        f.write("batch1/images/" + name + ".png " + "batch1/depths/" + name + ".png\n")
 
 print(f"Wrote {len(filenames)} filenames to {train_file} and {val_file}")

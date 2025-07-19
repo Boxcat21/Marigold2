@@ -4,7 +4,7 @@ base_config:
 - config/dataset_depth/dataset_train_mytumor.yaml
 - config/dataset_depth/dataset_val_mytumor.yaml
 # Optional if you want visualization:
-# - config/dataset_depth/dataset_vis_mytumor.yaml
+- config/dataset_depth/dataset_vis_mytumor.yaml
 - config/model_sdv2.yaml
 
 pipeline:

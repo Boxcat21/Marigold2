@@ -1,0 +1,2 @@
+batch1/images/img_001699.png batch1/depths/img_001699.png
+batch1/images/img_002070.png batch1/depths/img_002070.png

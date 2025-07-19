@@ -1,0 +1,9 @@
+dataset:
+  vis:
+  - name: tumor_dataset
+    disp_name: mytumor_vis
+    dir: ''
+    filenames: data_split/tumor_depth/filenames_vis.txt
+    resize_to_hw:
+    - 480
+    - 640

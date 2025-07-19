@@ -3,7 +3,8 @@ dataset:
     batch_size: 2
     name: tumor_dataset
     type: paired_image_depth
-    dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1  # e.g., datasets/mytumor
+    # dir: /mnt/c/Users/Boxcat21/Documents/SoftwareWorkspace/Data/MarigoldData/batch1  # e.g., datasets/mytumor
+    dir: ''
     filenames: data_split/tumor_depth/filenames_train.txt
     depth_format: image
     image_extension: png

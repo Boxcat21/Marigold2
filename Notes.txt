@@ -22,6 +22,20 @@ python script/depth/train.py \
   --no_wandb \
   --add_datetime_prefix
 
+python script/depth/train.py \
+  --config config/train_marigold_mytumor.yaml \
+  --base_data_dir ./data/batch1 \
+  --base_ckpt_dir /home/boxcat/workspace/labwork/depthmodel/ckptm2 \
+  --no_wandb \
+  --add_datetime_prefix
+
+python script/depth/train.py \
+  --config config/train_marigold_mytumor.yaml \
+  --base_data_dir ./data \
+  --base_ckpt_dir /home/boxcat/workspace/labwork/depthmodel/ckptm2/stable-diffusion-2 \
+  --no_wandb \
+  --add_datetime_prefix
+
 
 
 NOTES:
