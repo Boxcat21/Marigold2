@@ -32,7 +32,7 @@ python script/depth/train.py \
 python script/depth/train.py \
   --config config/train_marigold_mytumor.yaml \
   --base_data_dir ./data \
-  --base_ckpt_dir /home/boxcat/workspace/labwork/depthmodel/ckptm2 \
+  --base_ckpt_dir ../ckpt2 \
   --no_wandb \
   --add_datetime_prefix
 
