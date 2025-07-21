@@ -68,6 +68,7 @@ from src.util.slurm_util import get_local_scratch_dir, is_on_slurm
 
 
 if "__main__" == __name__:
+    print(f"Running script: {__file__}")
     t_start = datetime.now()
     logging.info(f"Started at {t_start}")
 
