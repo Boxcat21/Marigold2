@@ -124,6 +124,8 @@ if "__main__" == __name__:
 
     args = parser.parse_args()
     resume_run = args.resume_run
+    print(f"Resuming from: {resume_run}")
+
     output_dir = args.output_dir
     base_data_dir = (
         args.base_data_dir
@@ -279,6 +281,11 @@ if "__main__" == __name__:
         augmentation_args=cfg.augmentation,
         depth_transform=depth_transform,
     )
+    print(f"Train dataset: {len(train_dataset)} samples")
+    if isinstance(train_dataset, list):
+        for ds in train_dataset:
+            print(f"Sub-dataset: {len(ds)} samples")
+
     logging.debug("Augmentation: ", cfg.augmentation)
     if "mixed" == cfg_data.train.name:
         dataset_ls = train_dataset
@@ -344,6 +351,8 @@ if "__main__" == __name__:
     model = MarigoldDepthPipeline.from_pretrained(
         os.path.join(base_ckpt_dir, cfg.model.pretrained_path), **_pipeline_kwargs
     )
+    print(f"Loading checkpoint from: {os.path.join(base_ckpt_dir, cfg.model.pretrained_path)}")
+    print(next(model.parameters()).device)
 
     # -------------------- Trainer --------------------
     # Exit time

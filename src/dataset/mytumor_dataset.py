@@ -38,6 +38,8 @@ class MyTumorDataset(BaseDepthDataset):
             rgb_transform=rgb_transform,
             **kwargs,
         )
+        # for path in self.image_paths[:10]:  # Print first 10 image paths for debugging
+        #     print(f"Image path: {path}")
 
     def _read_depth_file(self, rel_path):
         """
