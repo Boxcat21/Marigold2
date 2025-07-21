@@ -352,7 +352,7 @@ if "__main__" == __name__:
         os.path.join(base_ckpt_dir, cfg.model.pretrained_path), **_pipeline_kwargs
     )
     print(f"Loading checkpoint from: {os.path.join(base_ckpt_dir, cfg.model.pretrained_path)}")
-    print(next(model.parameters()).device)
+    # print(next(model.parameters()).device)
 
     # -------------------- Trainer --------------------
     # Exit time
